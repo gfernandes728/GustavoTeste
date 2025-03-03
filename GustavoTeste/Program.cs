@@ -1,7 +1,23 @@
+using GustavoTeste.Business.Business;
+using GustavoTeste.Business.Interface;
+using GustavoTeste.Infra;
+using GustavoTeste.Infra.Interface;
+using GustavoTeste.Infra.Repository;
+
 var builder = WebApplication.CreateBuilder(args);
 
 // Add services to the container.
 builder.Services.AddControllersWithViews();
+
+builder.Services.AddTransient<DbDapperContext>();
+
+builder.Services.AddScoped<IAgrupadoresRepository, AgrupadoresRepository>();
+builder.Services.AddScoped<IFormularioRepository, FormularioRepository>();
+builder.Services.AddScoped<IUtilsRepository, UtilsRepository>();
+
+builder.Services.AddScoped<IAgrupadoresBusiness, AgrupadoresBusiness>();
+builder.Services.AddScoped<IFormularioBusiness, FormularioBusiness>();
+builder.Services.AddScoped<IUtilsBusiness, UtilsBusiness>();
 
 var app = builder.Build();
 

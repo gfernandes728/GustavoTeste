@@ -1,15 +1,19 @@
-﻿<Project Sdk="Microsoft.NET.Sdk.Web">
+<Project Sdk="Microsoft.NET.Sdk.Worker">
 
   <PropertyGroup>
     <TargetFramework>net7.0</TargetFramework>
     <Nullable>enable</Nullable>
     <ImplicitUsings>enable</ImplicitUsings>
+    <UserSecretsId>dotnet-GustavoTeste.Business-3afe43ed-ec73-42fc-b410-750610d90cdb</UserSecretsId>
   </PropertyGroup>
 
   <ItemGroup>
-    <ProjectReference Include="..\GustavoTeste.Business\GustavoTeste.Business.csproj" />
+    <PackageReference Include="Microsoft.Extensions.Hosting" Version="7.0.0" />
+    <PackageReference Include="ValueInjecter" Version="3.2.0" />
+  </ItemGroup>
+
+  <ItemGroup>
     <ProjectReference Include="..\GustavoTeste.Infra\GustavoTeste.Infra.csproj" />
     <ProjectReference Include="..\GustavoTeste.Models\GustavoTeste.Models.csproj" />
   </ItemGroup>
-
 </Project>

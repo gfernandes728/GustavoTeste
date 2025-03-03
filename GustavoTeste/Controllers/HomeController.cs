@@ -1,32 +1,22 @@
-﻿using GustavoTeste.Models;
-using Microsoft.AspNetCore.Mvc;
-using System.Diagnostics;
+﻿using Microsoft.AspNetCore.Mvc;
+using GustavoTeste.Business.Interface;
+using GustavoTeste.Models.ViewModels;
 
 namespace GustavoTeste.Controllers
 {
     public class HomeController : Controller
     {
-        private readonly ILogger<HomeController> _logger;
+        private readonly IAgrupadoresBusiness _agrupadoresBusiness;
 
-        public HomeController(ILogger<HomeController> logger)
-        {
-            _logger = logger;
-        }
+        public HomeController(IAgrupadoresBusiness agrupadoresBusiness)
+            => _agrupadoresBusiness = agrupadoresBusiness;
 
+        [HttpGet]
         public IActionResult Index()
-        {
-            return View();
-        }
+            => View(_agrupadoresBusiness.ObterDadosIniciais());
 
-        public IActionResult Privacy()
-        {
-            return View();
-        }
-
-        [ResponseCache(Duration = 0, Location = ResponseCacheLocation.None, NoStore = true)]
-        public IActionResult Error()
-        {
-            return View(new ErrorViewModel { RequestId = Activity.Current?.Id ?? HttpContext.TraceIdentifier });
-        }
+        [HttpPost]
+        public async Task<IActionResult> Index(AgrupadoresViewModels models)
+            => View(await _agrupadoresBusiness.ObterDadosSelecionados(models));
     }
 }
