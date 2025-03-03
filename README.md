@@ -4,7 +4,7 @@
 ## Passos para Instalacao do Projeto
 
 ## Passo 1:
-## Rodar os Scripts de banco de dados anexado em Teste.Scrips > ScriptSql
+## Rodar os Scripts de banco de dados anexado em GustavoTeste.Scripts > ScriptSql
 ## Script 01 - Desafio Teste 01.sql
 ## Script 02 - Desafio Teste 02.sql
 
